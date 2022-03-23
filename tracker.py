@@ -33,9 +33,11 @@ could be replaced with PostgreSQL or Pandas or straight python lists
 
 #from transactions import Transaction
 from category import Category
+from transactions import Transaction
+
 import sys
 
-#transactions = Transaction('tracker.db')
+transactions = Transaction('tracker.db')
 category = Category('tracker.db')
 
 
@@ -73,6 +75,17 @@ def process_choice(choice):
         category.add(cat)
     elif choice=='3':
         print("modifying category")
+        rowid = int(input("rowid: "))
+        name = input("new category name: ")
+        desc = input("new category description: ")
+        cat = {'name':name, 'desc':desc}
+        category.update(rowid,cat)
+    elif choice=='4':
+        print("showing transactions")
+        trans = transactions.select_all()
+        print_transactions(trans)
+    elif choice=='5':
+        print("adding transaction")
         rowid = int(input("rowid: "))
         name = input("new category name: ")
         desc = input("new category description: ")
@@ -120,6 +133,14 @@ def print_categories(cats):
     print('-'*45)
     for cat in cats:
         print_category(cat)
+def print_transaction(tran):
+    print("%-3s %-10s %-30s %-30s %-30s"%(tran['item'],tran['amount'],tran['category'],tran['date'],tran['description']))
+
+def print_transactions(trans):
+    print("%-3s %-10s %-30s %-30s %-30s"%("item_#","amount","category","date","description"))
+    print('-'*100)
+    for tran in trans:
+        print_transaction(tran)
 
 
 # here is the main call!
