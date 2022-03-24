@@ -10,8 +10,6 @@ class Transaction():
         self.drop_data_table()
         self.create_data_table()
 
-
-
     def create_data_table(self):
         ''' create a table to store the Brandeis course data'''
         con = sqlite3.connect(self.dbfile)
@@ -24,6 +22,17 @@ class Transaction():
                                 description text)''')
         con.commit()
         con.close()
+    
+    def select_byYear(self):
+        '''Summarize by year in descending order '''
+        con= sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY date DESC")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return self.to_tran_dict_list(tuples)
+
 
     def drop_data_table(self):
         ''' remove the table and all of its data from the database'''
