@@ -86,11 +86,13 @@ def process_choice(choice):
         print_transactions(trans)
     elif choice=='5':
         print("adding transaction")
-        rowid = int(input("rowid: "))
-        name = input("new category name: ")
-        desc = input("new category description: ")
-        cat = {'name':name, 'desc':desc}
-        category.update(rowid,cat)
+        item = int(input("item id: "))
+        amount = input("Amount: ")
+        cat = input("Category: ")
+        date = input("Date: ")
+        desc = input("Descrrription: ")
+        tran = {'item':item, 'amount':amount, 'category':cat,'date':date, 'description':desc}
+        transactions.add(tran)
     else:
         print("choice",choice,"not yet implemented")
 
@@ -134,11 +136,11 @@ def print_categories(cats):
     for cat in cats:
         print_category(cat)
 def print_transaction(tran):
-    print("%-3s %-10s %-30s %-30s %-30s"%(tran['item'],tran['amount'],tran['category'],tran['date'],tran['description']))
+    print("%-30s %-30s %-30s %-30s %-30s"%(tran['item'],tran['amount'],tran['category'],tran['date'],tran['description']))
 
 def print_transactions(trans):
-    print("%-3s %-10s %-30s %-30s %-30s"%("item_#","amount","category","date","description"))
-    print('-'*100)
+    print("%-30s %-30s %-30s %-30s %-30s"%("item_#","amount","category","date","description"))
+    print('-'*150)
     for tran in trans:
         print_transaction(tran)
 
