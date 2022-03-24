@@ -89,10 +89,10 @@ def process_choice(choice):
         item = int(input("item id: "))
         amount = input("Amount: ")
         cat = input("Category: ")
-        date = input("Date (yyyy-mm-dd): ")
-        while len(date) != 10 or date[4] != '-' or date[7] != '-':
+        date = input("Date (mm/dd/yyyy): ")
+        while len(date) != 10 or date[2] != '/' or date[5] != '/':
             print('wrong date format')
-            date = input("Date (yyyy-mm-dd): ")
+            date = input("Date (mm/dd/yyyy): ")
         desc = input("Descrrription: ")
         tran = {'item':item, 'amount':amount, 'category':cat,'date':date, 'description':desc}
         transactions.add(tran)
