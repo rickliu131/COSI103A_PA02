@@ -90,7 +90,7 @@ def process_choice(choice):
         amount = input("Amount: ")
         cat = input("Category: ")
         date = input("Date (yyyy-mm-dd): ")
-        while date[4] != '-' or date[7] != '-':
+        while len(date) != 10 or date[4] != '-' or date[7] != '-':
             print('wrong date format')
             date = input("Date (yyyy-mm-dd): ")
         desc = input("Descrrription: ")
