@@ -35,7 +35,7 @@ class Transaction:
         con.close()
 
     def select_by_year(self):
-        """Summarize by year in descending order """
+        """ Summarize by year in descending order """
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute("SELECT * FROM transactions ORDER BY date DESC")
@@ -45,7 +45,7 @@ class Transaction:
         return self.to_tran_dict_list(tuples)
 
     def select_by_category(self):
-        """Summarize by category in alphabetic order; Implemented by Tianjun Cai"""
+        """ Summarize by category in alphabetic order; Implemented by Tianjun Cai"""
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute("SELECT * FROM transactions ORDER BY category")
