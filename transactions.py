@@ -66,8 +66,7 @@ class Transaction:
         con.commit()
         con.close()
         return to_tran_dict_list(tuples)
-
-
+        
     # Implemented by Yizhe
     def select_all(self):
         """ return all of the categories as a list of dicts."""
@@ -117,7 +116,8 @@ class Transaction:
         con.close()
         if tuples:
             return to_tran_dict(tuples[0])
-        return None
+        else:
+            return None
 
     def delete(self, item_id):
         # Implemented by Yuxuan
@@ -127,6 +127,17 @@ class Transaction:
         cur.execute('''DELETE FROM transactions WHERE item=(?);''', (item_id,))
         con.commit()
         con.close()
+
+    def order_by_date(self):
+        # Implemented by Yuxuan
+        # Sort transactions by date
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY date DESC")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tran_dict_list(tuples)
 
 
 if __name__ == '__main__':

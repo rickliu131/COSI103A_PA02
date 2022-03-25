@@ -113,7 +113,7 @@ def process_choice(choice):
         # Implemented by Yuxuan
         # Summarize transactions by date
         print("Summarize transactions by date...")
-        pass
+        print_transactions(transactions.order_by_date())
     #Implemented by Siyu
     elif choice == '9':
         print("Summarize transactions by year")
