@@ -13,7 +13,7 @@ class Transaction:
     """
     Transaction class that will store financial transactions with the fields
     """
-    # Implemented by Yizhe
+    # Implemented by Siyu
     def __init__(self, dbfile):
         """ courses is a tuple of the courses being offered """
         self.dbfile = dbfile
