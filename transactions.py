@@ -1,7 +1,10 @@
 import sqlite3
 import csv
 
-
+def to_tran_dict_forTest(self, tran_tuple):
+        tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category': tran_tuple[2], 'date': tran_tuple[3],
+                'description': tran_tuple[4]}
+        return tran
 class Transaction:
     """
     Transaction class that will store financial transactions with the fields
@@ -82,6 +85,8 @@ class Transaction:
                                                                    tran['date'], tran['description']))
         con.commit()
         con.close()
+        return tran['item']
+
     def select_byYear(self):
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
@@ -90,6 +95,19 @@ class Transaction:
         con.commit()
         con.close()
         return self.to_tran_dict_list(tuples)
+
+    def test_delete(self, itemid):
+        """
+        add a category to the categories table.
+        this returns the rowid of the inserted element
+        """
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute('''DELETE FROM categories
+                       WHERE item=(?);
+        ''', (itemid,))
+        con.commit()
+        con.close()
 
 
 

@@ -24,9 +24,9 @@ def small_db(empty_db):
     id2=empty_db.add(tran2)
     id3=empty_db.add(tran3)
     yield empty_db
-    empty_db.delete(id3)
-    empty_db.delete(id2)
-    empty_db.delete(id1)
+    empty_db.test_delete(id3)
+    empty_db.test_delete(id2)
+    empty_db.test_deletepyth(id1)
 
 @pytest.mark.simple
 def test_to_cat_dict():
@@ -43,16 +43,14 @@ def test_to_cat_dict():
 def test_add(med_db):
     ''' add a category to db, the select it, then delete it'''
 
-    cat0 = {'name':'testing_add',
-            'desc':'see if it works',
-            }
-    cats0 = med_db.select_all()
-    rowid = med_db.add(cat0)
-    cats1 = med_db.select_all()
-    assert len(cats1) == len(cats0) + 1
-    cat1 = med_db.select_one(rowid)
-    assert cat1['name']==cat0['name']
-    assert cat1['desc']==cat0['desc']
+    tran0 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/30', 'description':'good1!'}
+    trans0 = med_db.select_all()
+    itemid = med_db.add(tran0)
+    trans1 = med_db.select_all()
+    assert len(trans1) == len(trans0) + 1
+    med_db.test_delete(itemid)
+    
+    
 
 @pytest.mark.select_by_category
 def test_select_by_category():
