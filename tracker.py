@@ -130,10 +130,10 @@ def process_choice(choice):
         trans = transactions.select_by_category()
         print_transactions(trans)
     elif choice == '11':
-        # Implemented by Tianjun Cai
+        # Implemented by Tianjun
         print(MENU)
     elif choice == '12':
-        # Implemented by Tianjun Cai
+        # Implemented by Tianjun
         print("Delete category")
         rowid = int(input("category row id: "))
         category.delete(rowid)

@@ -83,6 +83,13 @@ def test_add(med_db):
     med_db.test_delete(itemid)
 
 
+@pytest.mark.select_all
+def test_select_all(med_db):
+    # Implemented by Tianjun
+    trans = med_db.select_all()
+    assert len(trans) == 13  # 3 in original small_db, 10 new data added
+
+
 @pytest.mark.select_by_month
 def test_select_by_month(empty_db):
     '''implemented by Emma'''
@@ -97,6 +104,24 @@ def test_select_by_month(empty_db):
     for tran in trans:
         assert tran['date'] == '2001/02/10'
 
+
+@pytest.mark.select_by_year
+def test_select_by_year(empty_db):
+    # Implemented by Tianjun
+    ''' tests if can select items by year '''
+    tran0 = {'item': 'iPhone', 'amount': 100, 'category': 'cash', 'date': '2001/03/10', 'description': 'null'}
+    tran1 = {'item': 'iPad', 'amount': 200, 'category': 'credit card', 'date': '2010/02/10', 'description': 'null'}
+    tran2 = {'item': 'iWatch', 'amount': 300, 'category': 'debit card', 'date': '2022/01/10', 'description': 'null'}
+    tran3 = {'item': 'AirPods', 'amount': 300, 'category': 'cash', 'date': '2022/02/10', 'description': 'null'}
+    empty_db.add(tran0)
+    empty_db.add(tran1)
+    empty_db.add(tran2)
+    empty_db.add(tran3)
+    trans = empty_db.select_by_year()
+    assert trans[0]['date'] == '2022/02/10'
+    assert trans[1]['date'] == '2022/01/10'
+    assert trans[2]['date'] == '2010/02/10'
+    assert trans[3]['date'] == '2001/03/10'
 
 @pytest.mark.select_by_category
 def test_select_by_category(empty_db):
@@ -115,3 +140,4 @@ def test_select_by_category(empty_db):
     assert trans[1]['item'] == 'AirPods'
     assert trans[2]['item'] == 'iPad'
     assert trans[3]['item'] == 'iWatch'
+

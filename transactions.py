@@ -4,26 +4,32 @@
 
 import sqlite3
 
+
 # Implemented by Yizhe
 def to_tran_dict(tran_tuple):
     tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category':
-            tran_tuple[2], 'date': tran_tuple[3],
-                'description': tran_tuple[4]}
+        tran_tuple[2], 'date': tran_tuple[3],
+            'description': tran_tuple[4]}
     return tran
+
+
 # Implemented by Yizhe
 def to_tran_dict_list(tran_tuples):
     return [to_tran_dict(tran) for tran in tran_tuples]
+
 
 class Transaction:
     """
     Transaction class that will store financial transactions with the fields
     """
+
     # Implemented by Siyu
     def __init__(self, dbfile):
         """ courses is a tuple of the courses being offered """
         self.dbfile = dbfile
         self.drop_data_table()
         self.create_data_table()
+
     # Implemented by Yizhe
     def create_data_table(self):
         """ create a table to store the Brandeis course data"""
@@ -46,7 +52,8 @@ class Transaction:
         cur.execute('''DROP TABLE IF EXISTS transactions''')
         con.commit()
         con.close()
-    #Implemented by Siyu
+
+    # Implemented by Siyu
     def select_by_year(self):
         """ Summarize by year in descending order """
         con = sqlite3.connect(self.dbfile)
@@ -140,14 +147,14 @@ class Transaction:
         con.close()
         return to_tran_dict_list(tuples)
 
-    #implemnted by Emma Xu
+    # implemnted by Emma Xu
     def select_by_month(self, month):
         """ lists all items with a specified month
         eg. enter 02, it will prints out all items of Feburary
         """
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        month = '%' + "/" + month + "/"+ '%'
+        month = '%' + "/" + month + "/" + '%'
         cur.execute("select * from transactions where date like (?)", ([month]))
         tuples = cur.fetchall()
         con.commit()
