@@ -2,3 +2,5 @@
 courses.csv
 __pycache__
 tracker.db
+.pytest_cache
+.idea

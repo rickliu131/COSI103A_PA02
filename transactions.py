@@ -1,7 +1,7 @@
 import sqlite3
 import csv
 
-def to_tran_dict_forTest(self, tran_tuple):
+def to_tran_dict_forTest(tran_tuple):
         tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category': tran_tuple[2], 'date': tran_tuple[3],
                 'description': tran_tuple[4]}
         return tran
