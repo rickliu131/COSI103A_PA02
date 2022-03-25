@@ -1,10 +1,14 @@
-import sqlite3
-import csv
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
 
-def to_tran_dict_forTest(tran_tuple):
-        tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category': tran_tuple[2], 'date': tran_tuple[3],
+import sqlite3
+
+def to_tran_dict_for_test(tran_tuple):
+    tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category': 
+            tran_tuple[2], 'date': tran_tuple[3],
                 'description': tran_tuple[4]}
-        return tran
+    return tran      
 class Transaction:
     """
     Transaction class that will store financial transactions with the fields
@@ -28,7 +32,7 @@ class Transaction:
                                 description text)''')
         con.commit()
         con.close()
-    
+ 
     # Implemented by Yizhe
     def drop_data_table(self):
         """ remove the table and all of its data from the database"""

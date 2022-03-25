@@ -30,19 +30,21 @@ Note the actual implementation of the ORM is hidden and so it
 could be replaced with PostgreSQL or Pandas or straight python lists
 
 """
+# pylint: disable=missing-module-docstring
+# pylint: disable=missing-class-docstring
+# pylint: disable=missing-function-docstring
 
 # from transactions import Transaction
 from category import Category
 from transactions import Transaction
 
-import sys
 
 transactions = Transaction('tracker.db')
 category = Category('tracker.db')
 
 # here is the menu for the tracker app
 
-menu = '''
+MENU = '''
 0. quit
 1. show categories
 2. add category
@@ -62,7 +64,7 @@ menu = '''
 def process_choice(choice):
     if choice == '0':
         return
-    elif choice == '1':
+    if choice == '1':
         cats = category.select_all()
         print_categories(cats)
     elif choice == '2':
@@ -100,15 +102,15 @@ def process_choice(choice):
         trans = transactions.select_by_year()
         print_transactions(trans)
     elif choice == '10':
-        '''Implemented by Tianjun Cai'''
+        #Implemented by Tianjun Cai
         print("Summarize transactions by category")
         trans = transactions.select_by_category()
         print_transactions(trans)
     elif choice == '11':
-        '''Implemented by Tianjun Cai'''
-        print(menu)
+        #Implemented by Tianjun Cai
+        print(MENU)
     elif choice == '12':
-        '''Implemented by Tianjun Cai'''
+        #Implemented by Tianjun Cai
         print("Delete category")
         rowid = int(input("category row id: "))
         category.delete(rowid)
@@ -122,8 +124,8 @@ def process_choice(choice):
 def toplevel():
     """ handle the user's choice """
 
-    ''' read the command args and process them'''
-    print(menu)
+    #read the command args and process them
+    print(MENU)
     choice = input("> ")
     while choice != '0':
         choice = process_choice(choice)
@@ -134,18 +136,7 @@ def toplevel():
 # here are some helper functions
 #
 
-def print_transactions(items):
-    """ print the transactions """
-    if len(items) == 0:
-        print('no items to print')
-        return
-    print('\n')
-    print("%-10s %-10d %-10s %-10d %-30s" % (
-        'item #', 'amount', 'category', 'date', 'description'))
-    print('-' * 40)
-    for item in items:
-        values = tuple(item.values())
-        print("%-10s %-10d %-10s %-10d %-30s" % values)
+
 
 
 def print_category(cat):
