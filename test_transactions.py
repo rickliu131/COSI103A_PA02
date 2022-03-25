@@ -2,7 +2,7 @@
 test_transactions runs unit and integration tests on the transactions module
 """
 import pytest
-from transactions import Transaction, to_tran_dict_forTest
+from transactions import Transaction, to_tran_dict
 @pytest.fixture
 def dbfile(tmpdir):
     ''' create a database file in a temporary file system '''
@@ -55,7 +55,7 @@ def med_db(small_db):
 def test_to_cat_dict():
     '''Yizhe'''
     ''' teting the to_cat_dict function '''
-    a = to_tran_dict_forTest((1,100,'any','2001/03/30','good123'))
+    a = to_tran_dict((1,100,'any','2001/03/30','good123'))
     assert a['item']==1
     assert a['amount']==100
     assert a['category']=='any'
