@@ -138,6 +138,18 @@ class Transaction:
         con.commit()
         con.close()
         return to_tran_dict_list(tuples)
+    
+    #implemnted by Emma Xu
+    def select_byMonth(self, month):
+        "lists all items with a specificed month, eg. enter 02, it will prints out all items of Feburary"
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        month = '%' + "/" + month + "/"+ '%'
+        cur.execute("select * from transactions where date like (?)", ([month]))
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return to_tran_dict_list(tuples)
 
 
 if __name__ == '__main__':
