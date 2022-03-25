@@ -16,7 +16,7 @@ def empty_db(dbfile):
 
 @pytest.fixture
 def small_db(empty_db):
-    '''Yizhe'''
+    # Implemented by Yizhe
     ''' create a small database, and tear it down later'''
     tran1 =  {'item':1, 'amount':100, 'category': 'any','date':'2001/03/30', 'description':'good1!'}
     tran2 = {'item':2, 'amount':1000, 'category': 'any','date':'2002/03/30', 'description':'good2!'}
@@ -31,7 +31,7 @@ def small_db(empty_db):
 
 @pytest.fixture
 def med_db(small_db):
-    '''Yizhe'''
+    # Implemented by Yizhe
     """ create a database with 10 more elements than small_db"""
     itemids = []
     # add 10 categories
@@ -52,8 +52,8 @@ def med_db(small_db):
         small_db.test_delete(itemids[j])
 
 @pytest.mark.simple
-def test_to_cat_dict():
-    '''Yizhe'''
+def test_to_trans_dict():
+    # Implemented by Yizhe
     ''' teting the to_cat_dict function '''
     a = to_tran_dict((1,100,'any','2001/03/30','good123'))
     assert a['item']==1
@@ -65,7 +65,7 @@ def test_to_cat_dict():
     
 @pytest.mark.add
 def test_add(med_db):
-    '''Yizhe'''
+    # Implemented by Yizhe
     ''' add a category to db, the select it, then delete it'''
 
     tran0 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/30', 'description':'good1!'}
