@@ -133,6 +133,17 @@ class Transaction:
         con.commit()
         con.close()
 
+    def order_by_date(self):
+        # Implemented by Yuxuan
+        # Sort transactions by date
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY date DESC")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return self.to_tran_dict_list(tuples)
+
 
 if __name__ == '__main__':
     trans = Transaction('tracker.db')
