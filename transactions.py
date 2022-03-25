@@ -44,7 +44,7 @@ class Transaction:
         cur.execute('''DROP TABLE IF EXISTS transactions''')
         con.commit()
         con.close()
-
+    #Implemented by Siyu
     def select_by_year(self):
         """ Summarize by year in descending order """
         con = sqlite3.connect(self.dbfile)
