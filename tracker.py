@@ -156,6 +156,7 @@ def print_transaction(tran):
 
 
 def print_transactions(trans):
+    
     print("%-20s %-20s %-20s %-20s %-20s" % ("item_#", "amount", "category", "date", "description"))
     print('-' * 100)
     for tran in trans:
