@@ -85,11 +85,13 @@ class Transaction:
         """
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)", (tran['item'], tran['amount'], tran['category'],
-                                                                   tran['date'], tran['description']))
+        cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",
+                    (tran['item'], tran['amount'], tran['category'],
+                     tran['date'], tran['description']))
         con.commit()
         con.close()
         return tran['item']
+
     # Implemented by Yizhe
     def test_delete(self, itemid):
         """
@@ -140,7 +142,9 @@ class Transaction:
 
     #implemnted by Emma Xu
     def select_by_month(self, month):
-        "lists all items with a specificed month, eg. enter 02, it will prints out all items of Feburary"
+        """ lists all items with a specified month
+        eg. enter 02, it will prints out all items of Feburary
+        """
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
         month = '%' + "/" + month + "/"+ '%'
