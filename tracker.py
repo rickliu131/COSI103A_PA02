@@ -55,6 +55,7 @@ menu = '''
 9. summarize transactions by year
 10. summarize transactions by category
 11. print this menu
+12. delete category
 '''
 
 
@@ -82,8 +83,8 @@ def process_choice(choice):
         print_transactions(trans)
     elif choice == '5':
         print("adding transaction")
-        item = int(input("item id: "))
-        amount = input("Amount: ")
+        item = input("item #: ")
+        amount = int(input("Amount: "))
         cat = input("Category: ")
         date = input("Date (yyyy/mm/dd): ")
         while len(date) != 10 or date[4] != '/' or date[7] != '/':
@@ -94,12 +95,21 @@ def process_choice(choice):
         transactions.add(tran)
     elif choice == '9':
         print("Summarize transactions by year")
-        trans = transactions.select_byYear()
+        trans = transactions.select_by_year()
         print_transactions(trans)
     elif choice == '10':
         '''Implemented by Tianjun Cai'''
         print("Summarize transactions by category")
-
+        trans = transactions.select_by_category()
+        print_transactions(trans)
+    elif choice == '11':
+        '''Implemented by Tianjun Cai'''
+        print(menu)
+    elif choice == '12':
+        '''Implemented by Tianjun Cai'''
+        print("Delete category")
+        rowid = int(input("category row id: "))
+        category.delete(rowid)
     else:
         print("choice", choice, "not yet implemented")
 
