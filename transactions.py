@@ -16,12 +16,6 @@ class Transaction:
     """
     Transaction class that will store financial transactions with the fields
     """
-    # Implemented by Siyu
-    def __init__(self, dbfile):
-        """ courses is a tuple of the courses being offered """
-        self.dbfile = dbfile
-        self.drop_data_table()
-        self.create_data_table()
     # Implemented by Yizhe
     def create_data_table(self):
         """ create a table to store the Brandeis course data"""
