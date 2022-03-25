@@ -1,5 +1,5 @@
 # PA02
-Our app can perform following function for users: 
+Our app can perform following function for users:\n 
 0. quit
 1. show categories
 2. add category
