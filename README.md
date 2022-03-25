@@ -1,5 +1,5 @@
 # PA02
-Our app can perform following function for users:\n 
+Our app can perform following function for users:<br /> 
 0. quit
 1. show categories
 2. add category
@@ -13,11 +13,11 @@ Our app can perform following function for users:\n
 10. summarize transactions by category
 11. print this menu
 
-The script to test our file:
-#!/bin/sh
-pylint transactions.py
-pylint tracker.py
-pytest -v test_transactions.py
+The script to test our file:<br />
+#!/bin/sh <br />
+pylint transactions.py <br />
+pylint tracker.py <br />
+pytest -v test_transactions.py<br />
 
-OR type
+OR type<br />
 sh transcript.sh
