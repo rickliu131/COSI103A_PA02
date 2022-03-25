@@ -120,7 +120,7 @@ class Transaction:
         con.commit()
         con.close()
         if tuples:
-            return to_tran_dict(tuples[0])
+            return self.to_tran_dict(tuples[0])
         else:
             return None
 
