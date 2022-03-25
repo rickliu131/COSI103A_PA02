@@ -74,8 +74,15 @@ def test_add(med_db):
     trans1 = med_db.select_all()
     assert len(trans1) == len(trans0) + 1
     med_db.test_delete(itemid)
-    
-    
+
+
+@pytest.mark.select_by_id
+def test_select_by_id(med_db):
+    # Implemented by Yuxuan
+    assert med_db.select_by_id(1)['item'] == '1'
+    assert med_db.select_by_id(3)['item'] == '3'
+    assert med_db.select_by_id(9999) is None
+
 
 @pytest.mark.select_by_category
 def test_select_by_category():
