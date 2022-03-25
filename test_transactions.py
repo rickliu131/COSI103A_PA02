@@ -73,9 +73,21 @@ def test_add(med_db):
     itemid = med_db.add(tran0)
     trans1 = med_db.select_all()
     assert len(trans1) == len(trans0) + 1
-    med_db.test_delete(itemid)
-    
-    
+    med_db.test_delete(itemid)     
+@pytest.mark.select_by_year
+def test_select_by_year(med_db):
+    # Implemented by Siyu
+    tran1 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/30', 'description':'good1!'}
+    tran2 = {'item':2, 'amount':100, 'category': 'any','date':'2003/03/30', 'description':'good2!'}
+    tran3 = {'item':3, 'amount':100, 'category': 'any','date':'2005/03/30', 'description':'good3!'}
+    id1=med_db.add(tran1)
+    id2=med_db.add(tran2)
+    id3=med_db.add(tran3)
+    dicts = med_db.select_by_year()
+    for index,tran in enumerate(dicts):
+        if index+1 < len(dicts):
+            next = dicts[index+1]
+            assert int(tran['date'][0:4])>=int(next['date'][0:4])
 
 @pytest.mark.select_by_category
 def test_select_by_category():
