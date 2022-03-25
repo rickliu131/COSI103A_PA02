@@ -66,7 +66,7 @@ class Transaction:
         con.commit()
         con.close()
         return to_tran_dict_list(tuples)
-        
+
     # Implemented by Yizhe
     def select_all(self):
         """ return all of the categories as a list of dicts."""
@@ -116,8 +116,7 @@ class Transaction:
         con.close()
         if tuples:
             return to_tran_dict(tuples[0])
-        else:
-            return None
+        return None
 
     def delete(self, item_id):
         # Implemented by Yuxuan
@@ -138,7 +137,7 @@ class Transaction:
         con.commit()
         con.close()
         return to_tran_dict_list(tuples)
-    
+
     #implemnted by Emma Xu
     def select_byMonth(self, month):
         "lists all items with a specificed month, eg. enter 02, it will prints out all items of Feburary"
