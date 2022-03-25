@@ -26,7 +26,29 @@ def small_db(empty_db):
     yield empty_db
     empty_db.test_delete(id3)
     empty_db.test_delete(id2)
-    empty_db.test_deletepyth(id1)
+    empty_db.test_delete(id1)
+
+@pytest.fixture
+def med_db(small_db):
+    """ create a database with 10 more elements than small_db"""
+    itemids = []
+    # add 10 categories
+    for i in range(10):
+        s = str(i)
+        tran = {'item': i,
+               'amount': i,
+               'category': 'any'+str(i),
+               'date': '2001/03/3'+str(i),
+               'description': 'good'+str(i),
+               }
+        itemid = small_db.add(tran)
+        itemids.append(itemid)
+
+    yield small_db
+
+    # remove those 10 categories
+    for j in range(10):
+        small_db.test_delete(itemids[j])
 
 @pytest.mark.simple
 def test_to_cat_dict():
