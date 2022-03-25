@@ -97,6 +97,7 @@ def process_choice(choice):
         desc = input("Description: ")
         tran = {'item': item, 'amount': amount, 'category': cat, 'date': date, 'description': desc}
         transactions.add(tran)
+    #Implemented by Siyu
     elif choice == '9':
         print("Summarize transactions by year")
         trans = transactions.select_by_year()
