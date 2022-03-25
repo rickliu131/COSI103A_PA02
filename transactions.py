@@ -9,13 +9,13 @@ class Transaction:
     """
     Transaction class that will store financial transactions with the fields
     """
-    '''Yizhe'''
+    # Implemented by Yizhe
     def __init__(self, dbfile):
         """ courses is a tuple of the courses being offered """
         self.dbfile = dbfile
         self.drop_data_table()
         self.create_data_table()
-    '''Yizhe'''
+    # Implemented by Yizhe
     def create_data_table(self):
         """ create a table to store the Brandeis course data"""
         con = sqlite3.connect(self.dbfile)
@@ -29,7 +29,7 @@ class Transaction:
         con.commit()
         con.close()
     
-    '''Yizhe'''
+    # Implemented by Yizhe
     def drop_data_table(self):
         """ remove the table and all of its data from the database"""
         con = sqlite3.connect(self.dbfile)
@@ -58,15 +58,17 @@ class Transaction:
         con.close()
         return self.to_tran_dict_list(tuples)
 
-    '''Yizhe'''
+    # Implemented by Yizhe
     def to_tran_dict(self, tran_tuple):
         tran = {'item': tran_tuple[0], 'amount': tran_tuple[1], 'category': tran_tuple[2], 'date': tran_tuple[3],
                 'description': tran_tuple[4]}
         return tran
-    '''Yizhe'''
+
+    # Implemented by Yizhe
     def to_tran_dict_list(self, tran_tuples):
         return [self.to_tran_dict(tran) for tran in tran_tuples]
-    '''Yizhe'''
+
+    # Implemented by Yizhe
     def select_all(self):
         """ return all of the categories as a list of dicts."""
         con = sqlite3.connect(self.dbfile)
@@ -76,7 +78,8 @@ class Transaction:
         con.commit()
         con.close()
         return self.to_tran_dict_list(tuples)
-    '''Yizhe'''
+
+    # Implemented by Yizhe
     def add(self, tran):
         """ add a category to the categories table.
             this returns the rowid of the inserted element
@@ -88,7 +91,7 @@ class Transaction:
         con.commit()
         con.close()
         return tran['item']
-    '''Yizhe'''
+    # Implemented by Yizhe
     def test_delete(self, itemid):
         """
         add a category to the categories table.

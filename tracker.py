@@ -78,12 +78,12 @@ def process_choice(choice):
         cat = {'name': name, 'desc': desc}
         category.update(rowid, cat)
     elif choice == '4':
-        '''Implemented by Yizhe Hong'''
+    # Implemented by Yizhe
         print("showing transactions")
         trans = transactions.select_all()
         print_transactions(trans)
     elif choice == '5':
-        '''Implemented by Yizhe Hong'''
+    # Implemented by Yizhe
         print("adding transaction")
         item = input("item #: ")
         amount = int(input("Amount: "))
