@@ -75,7 +75,19 @@ def test_add(med_db):
     assert len(trans1) == len(trans0) + 1
     med_db.test_delete(itemid)
     
-    
+@pytest.mark.select_byMonth
+def test_select_byMonth(empty_db):
+    '''implemented by Emma'''
+    '''tests if transactions program can select all items with a specified month'''
+    tran0 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/10', 'description':'null'}
+    tran1 = {'item':2, 'amount':200, 'category': 'any','date':'2001/02/10', 'description':'null'}
+    tran2 = {'item':3, 'amount':300, 'category': 'any','date':'2001/01/10', 'description':'null'}
+    empty_db.add(tran0)
+    empty_db.add(tran1)
+    empty_db.add(tran2)
+    trans = empty_db.select_byMonth('02')
+    for tran in trans:
+         assert tran['date'] == '2001/02/10'
 
 @pytest.mark.select_by_category
 def test_select_by_category():
