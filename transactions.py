@@ -109,6 +109,29 @@ class Transaction:
         con.commit()
         con.close()
 
+    def select_by_id(self, item_id):
+        # Implemented by Yuxuan
+        # Select a transaction by its id
+        # Return None if not found
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute('''SELECT * FROM transactions WHERE item=(?);''', (item_id,))
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        if tuples:
+            return to_tran_dict(tuples[0])
+        else:
+            return None
+
+    def delete(self, item_id):
+        # Implemented by Yuxuan
+        # Delete a transaction, given its id
+        con = sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute('''DELETE FROM transactions WHERE item=(?);''', (item_id,))
+        con.commit()
+        con.close()
 
 
 if __name__ == '__main__':

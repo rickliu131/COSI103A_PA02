@@ -97,6 +97,23 @@ def process_choice(choice):
         desc = input("Description: ")
         tran = {'item': item, 'amount': amount, 'category': cat, 'date': date, 'description': desc}
         transactions.add(tran)
+    elif choice == '6':
+        # Implemented by Yuxuan
+        # Delete transaction
+        print("delete a transaction")
+        item_id = input("item #: ")
+        if transactions.select_by_id(item_id):
+            # if found
+            transactions.delete(item_id)
+            print(f"Transaction #{item_id} was successfully deleted.")
+        else:
+            # not found
+            print(f"Transaction #{item_id} not found. Cannot be deleted.")
+    elif choice == '7':
+        # Implemented by Yuxuan
+        # Summarize transactions by date
+        print("Summarize transactions by date...")
+        pass
     #Implemented by Siyu
     elif choice == '9':
         print("Summarize transactions by year")
