@@ -1,3 +1,6 @@
+"""
+test_transactions runs unit and integration tests on the transactions module
+"""
 import pytest
 from transactions import Transaction, to_tran_dict_forTest
 @pytest.fixture
@@ -50,3 +53,7 @@ def test_add(med_db):
     cat1 = med_db.select_one(rowid)
     assert cat1['name']==cat0['name']
     assert cat1['desc']==cat0['desc']
+
+@pytest.mark.select_by_category
+def test_select_by_category():
+    pass

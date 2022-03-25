@@ -1,3 +1,4 @@
 .DS_Store
 courses.csv
 __pycache__
+tracker.db
