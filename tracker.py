@@ -63,7 +63,7 @@ MENU = '''
 
 def process_choice(choice):
     if choice == '0':
-        return
+        return '0'
     if choice == '1':
         cats = category.select_all()
         print_categories(cats)
@@ -157,7 +157,6 @@ def print_transaction(tran):
 
 
 def print_transactions(trans):
-    
     print("%-20s %-20s %-20s %-20s %-20s" % ("item_#", "amount", "category", "date", "description"))
     print('-' * 100)
     for tran in trans:
