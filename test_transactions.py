@@ -74,34 +74,9 @@ def test_add(med_db):
     trans1 = med_db.select_all()
     assert len(trans1) == len(trans0) + 1
     med_db.test_delete(itemid)
-
-@pytest.mark.select_by_id
-def test_select_by_id(med_db):
-    # Implemented by Yuxuan
-    assert med_db.select_by_id(1)['item'] == '1'
-    assert med_db.select_by_id(3)['item'] == '3'
-    assert med_db.select_by_id(9999) is None
-
-@pytest.mark.select_by_year
-def test_select_by_year(med_db):
-    # Implemented by Siyu
-    tran1 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/30', 'description':'good1!'}
-    tran2 = {'item':2, 'amount':100, 'category': 'any','date':'2003/03/30', 'description':'good2!'}
-    tran3 = {'item':3, 'amount':100, 'category': 'any','date':'2005/03/30', 'description':'good3!'}
-    id1=med_db.add(tran1)
-    id2=med_db.add(tran2)
-    id3=med_db.add(tran3)
-    dicts = med_db.select_by_year()
-    for index,tran in enumerate(dicts):
-        if index+1 < len(dicts):
-            next = dicts[index+1]
-            assert int(tran['date'][0:4])>=int(next['date'][0:4])
-    med_db.test_delete(id1)
-    med_db.test_delete(id2)
-    med_db.test_delete(id3)
     
-@pytest.mark.select_byMonth
-def test_select_byMonth(empty_db):
+@pytest.mark.select_by_month
+def test_select_by_month(empty_db):
     '''implemented by Emma'''
     '''tests if transactions program can select all items with a specified month'''
     tran0 = {'item':1, 'amount':100, 'category': 'any','date':'2001/03/10', 'description':'null'}
@@ -110,22 +85,9 @@ def test_select_byMonth(empty_db):
     empty_db.add(tran0)
     empty_db.add(tran1)
     empty_db.add(tran2)
-    trans = empty_db.select_byMonth('02')
+    trans = empty_db.select_by_month('02')
     for tran in trans:
          assert tran['date'] == '2001/02/10'
-
-@pytest.mark.select_by_date
-def test_select_by_date(empty_db):
-    # Implemented by Yuxuan
-    tran1 = {'item': 1, 'amount': 10, 'category': 'cat1', 'date': '2021/12/31', 'description': 'A'}
-    tran2 = {'item': 2, 'amount': 20, 'category': 'cat1', 'date': '2022/01/01', 'description': 'B'}
-    tran3 = {'item': 3, 'amount': 15, 'category': 'cat2', 'date': '2020/02/14', 'description': 'C'}
-    empty_db.add(tran1)
-    empty_db.add(tran2)
-    empty_db.add(tran3)
-    assert empty_db.order_by_date()[0]['date'] == '2022/01/01'
-    assert empty_db.order_by_date()[1]['date'] == '2021/12/31'
-    assert empty_db.order_by_date()[2]['date'] == '2020/02/14'
 
 @pytest.mark.select_by_category
 def test_select_by_category():

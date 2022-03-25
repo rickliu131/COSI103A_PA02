@@ -118,7 +118,7 @@ def process_choice(choice):
     elif choice == '8':
         print("Summerize transcations by month")
         month = input("Selected month: ")
-        trans = transactions.select_byMonth(month)
+        trans = transactions.select_by_month(month)
         print_transactions(trans)
     elif choice == '9':
         print("Summarize transactions by year")

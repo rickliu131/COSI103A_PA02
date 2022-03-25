@@ -139,7 +139,7 @@ class Transaction:
         return to_tran_dict_list(tuples)
 
     #implemnted by Emma Xu
-    def select_byMonth(self, month):
+    def select_by_month(self, month):
         "lists all items with a specificed month, eg. enter 02, it will prints out all items of Feburary"
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
