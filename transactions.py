@@ -4,7 +4,7 @@ class Transaction():
     '''
     Transaction class that will store financial transactions with the fields
     '''
-    def __init__(self,dbfile):
+    def __init__(self, dbfile):
         ''' courses is a tuple of the courses being offered '''
         self.dbfile = dbfile
         self.drop_data_table()
@@ -42,7 +42,7 @@ class Transaction():
         con.commit()
         con.close()
         
-    def to_tran_dict(self,tran_tuple):
+    def to_tran_dict(self, tran_tuple):
         tran = {'item':tran_tuple[0], 'amount':tran_tuple[1], 'category':tran_tuple[2],'date':tran_tuple[3], 'description':tran_tuple[4]}
         return tran
 
