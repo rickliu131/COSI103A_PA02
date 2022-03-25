@@ -1,5 +1,9 @@
 import sqlite3
 import csv
+def to_tran_dict_forTest(self,tran_tuple):
+        tran = {'item':tran_tuple[0], 'amount':tran_tuple[1], 'category':tran_tuple[2],'date':tran_tuple[3], 'description':tran_tuple[4]}
+        return tran
+        
 class Transaction():
     '''
     Transaction class that will store financial transactions with the fields
@@ -17,7 +21,7 @@ class Transaction():
         con = sqlite3.connect(self.dbfile)
         cur = con.cursor()
         cur.execute('''CREATE TABLE IF NOT EXISTS transactions (
-                                item text, 
+                                item int, 
                                 amount int,
                                 category text,
                                 date text, 
@@ -44,7 +48,7 @@ class Transaction():
         ''' return all of the categories as a list of dicts.'''
         con= sqlite3.connect(self.dbfile)
         cur = con.cursor()
-        cur.execute("SELECT item, * FROM transactions")
+        cur.execute("SELECT * FROM transactions")
         tuples = cur.fetchall()
         con.commit()
         con.close()
@@ -59,6 +63,15 @@ class Transaction():
         cur.execute("INSERT INTO transactions VALUES(?,?,?,?,?)",(tran['item'],tran['amount'],tran['category'],tran['date'],tran['description']))
         con.commit()
         con.close()
+    def select_byYear(self):
+        con= sqlite3.connect(self.dbfile)
+        cur = con.cursor()
+        cur.execute("SELECT * FROM transactions ORDER BY date DESC")
+        tuples = cur.fetchall()
+        con.commit()
+        con.close()
+        return self.to_tran_dict_list(tuples)
+
 
 
 

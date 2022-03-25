@@ -89,13 +89,18 @@ def process_choice(choice):
         item = int(input("item id: "))
         amount = input("Amount: ")
         cat = input("Category: ")
-        date = input("Date (mm/dd/yyyy): ")
-        while len(date) != 10 or date[2] != '/' or date[5] != '/':
+        date = input("Date (yyyy/mm/dd): ")
+        while len(date) != 10 or date[4] != '/' or date[7] != '/':
             print('wrong date format')
-            date = input("Date (mm/dd/yyyy): ")
+            date = input("Date (yyyy/mm/dd): ")
         desc = input("Descrrription: ")
         tran = {'item':item, 'amount':amount, 'category':cat,'date':date, 'description':desc}
         transactions.add(tran)
+    elif choice=='9':
+        print("Summarize transactions by year")
+        trans = transactions.select_byYear()
+        print_transactions(trans)
+
     else:
         print("choice",choice,"not yet implemented")
 
