@@ -27,6 +27,7 @@ To run pytest and see the result once we are in the correct directory, call:
 pytest
 ```
 and see results as below:
+
 <img width="565" alt="Screen Shot 2022-04-24 at 1 40 17 PM" src="https://user-images.githubusercontent.com/62511665/164989267-6003b112-0b71-408b-8e6c-e4b3dce7a87e.png">
 
 
