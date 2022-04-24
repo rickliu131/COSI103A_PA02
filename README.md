@@ -63,3 +63,15 @@ and start to add the corresponding category name and description:
 and the category will display as below: 
 
 <img width="402" alt="Screen Shot 2022-04-24 at 1 52 47 PM" src="https://user-images.githubusercontent.com/62511665/164989709-36c011fd-3906-4550-ae60-9ebfd85183d1.png">
+
+Adding and displaying transactions are similar to that of category. Once a transaction is added, we can see the transaction by calling 
+``` bash
+4
+``` 
+and we can also summarize our transation by variousn factors. At the end, once all the operations are done, call 
+``` bash
+0
+``` 
+to quit.
+
+Thanks for visiting and using our app! 
